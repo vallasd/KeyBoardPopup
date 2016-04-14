@@ -2,9 +2,7 @@
 //  MainViewController.swift
 //  TabletAssignmentSwift
 //
-//  Created by David Vallas Chia on 4/9/16.
-//  Copyright © 2016 FenixLabs. All rights reserved.
-//
+//  Created by David Vallas on 4/9/16.
 
 import UIKit
 
@@ -23,7 +21,7 @@ class MainViewController: UIViewController, UIPopoverPresentationControllerDeleg
     @IBAction func barButtonTapped(sender: AnyObject) {
         transitioningDelegate = commentTransitionDelegate
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewControllerWithIdentifier("commentPopover") as! CommentTVC
+        let vc = sb.instantiateViewControllerWithIdentifier("commentVC") as! CommentVC
         vc.modalPresentationStyle = UIModalPresentationStyle.Custom
         vc.transitioningDelegate = commentTransitionDelegate
         presentViewController(vc, animated: true, completion: nil)

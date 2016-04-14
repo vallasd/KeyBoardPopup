@@ -11,6 +11,9 @@
 		031B76551CB494D00063D0FE /* CommentTVC_Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031B76541CB494D00063D0FE /* CommentTVC_Demo.swift */; };
 		031B76571CB496E60063D0FE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031B76561CB496E60063D0FE /* User.swift */; };
 		031B765A1CB497000063D0FE /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031B76591CB497000063D0FE /* Comment.swift */; };
+		0329B7951CBDB4EE00EEDB49 /* CommentHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0329B7941CBDB4EE00EEDB49 /* CommentHeaderVC.swift */; };
+		0329B7971CBDB4FF00EEDB49 /* CommentFooterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0329B7961CBDB4FF00EEDB49 /* CommentFooterVC.swift */; };
+		0329B7991CBDB52100EEDB49 /* CommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0329B7981CBDB52100EEDB49 /* CommentVC.swift */; };
 		03A48C5C1CB9E499005C8EE6 /* CommentAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A48C5B1CB9E499005C8EE6 /* CommentAnimatedTransitioning.swift */; };
 		03A48C5E1CB9E4B2005C8EE6 /* CommentTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A48C5D1CB9E4B2005C8EE6 /* CommentTransitioningDelegate.swift */; };
 		03A48C601CB9E531005C8EE6 /* CommentPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A48C5F1CB9E531005C8EE6 /* CommentPresentationController.swift */; };
@@ -31,6 +34,9 @@
 		031B76541CB494D00063D0FE /* CommentTVC_Demo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTVC_Demo.swift; sourceTree = "<group>"; };
 		031B76561CB496E60063D0FE /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
 		031B76591CB497000063D0FE /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Comment.swift; path = Model/Comment.swift; sourceTree = "<group>"; };
+		0329B7941CBDB4EE00EEDB49 /* CommentHeaderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentHeaderVC.swift; sourceTree = "<group>"; };
+		0329B7961CBDB4FF00EEDB49 /* CommentFooterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFooterVC.swift; sourceTree = "<group>"; };
+		0329B7981CBDB52100EEDB49 /* CommentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentVC.swift; sourceTree = "<group>"; };
 		03A48C5B1CB9E499005C8EE6 /* CommentAnimatedTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentAnimatedTransitioning.swift; path = Transitions/CommentAnimatedTransitioning.swift; sourceTree = "<group>"; };
 		03A48C5D1CB9E4B2005C8EE6 /* CommentTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentTransitioningDelegate.swift; path = Transitions/CommentTransitioningDelegate.swift; sourceTree = "<group>"; };
 		03A48C5F1CB9E531005C8EE6 /* CommentPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentPresentationController.swift; path = Transitions/CommentPresentationController.swift; sourceTree = "<group>"; };
@@ -63,7 +69,10 @@
 			isa = PBXGroup;
 			children = (
 				B8120C581C77B597005F8D5F /* MainViewController.swift */,
+				0329B7981CBDB52100EEDB49 /* CommentVC.swift */,
 				031B76511CB4943B0063D0FE /* CommentTVC.swift */,
+				0329B7941CBDB4EE00EEDB49 /* CommentHeaderVC.swift */,
+				0329B7961CBDB4FF00EEDB49 /* CommentFooterVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -225,11 +234,14 @@
 				03C814FD1CB56FAA00E49636 /* CommentTVCell.swift in Sources */,
 				03A48C5C1CB9E499005C8EE6 /* CommentAnimatedTransitioning.swift in Sources */,
 				031B76521CB4943B0063D0FE /* CommentTVC.swift in Sources */,
+				0329B7951CBDB4EE00EEDB49 /* CommentHeaderVC.swift in Sources */,
 				03C815011CB5763200E49636 /* NSDate.swift in Sources */,
 				B8120C591C77B597005F8D5F /* MainViewController.swift in Sources */,
 				03A48C5E1CB9E4B2005C8EE6 /* CommentTransitioningDelegate.swift in Sources */,
+				0329B7991CBDB52100EEDB49 /* CommentVC.swift in Sources */,
 				031B76571CB496E60063D0FE /* User.swift in Sources */,
 				03C814FB1CB56F7C00E49636 /* CommentMetaTVCell.swift in Sources */,
+				0329B7971CBDB4FF00EEDB49 /* CommentFooterVC.swift in Sources */,
 				03C815051CB9A30F00E49636 /* UIImageView.swift in Sources */,
 				03A48C601CB9E531005C8EE6 /* CommentPresentationController.swift in Sources */,
 				03C815031CB5764500E49636 /* Double.swift in Sources */,

@@ -3,66 +3,20 @@
 //  TabletAssignmentSwift
 //
 //  Created by David Vallas on 4/9/16.
-//  Copyright © 2016 FenixLabs. All rights reserved.
-//
+
 
 import UIKit
 
-class CommentTVC: UITableViewController {
-    
-    @IBOutlet weak var postTextField: UITextField!
-    @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var footerView: UIView!
-    
-    @IBAction func donePressed(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
-        postTextField.resignFirstResponder()
-    }
+class CommentTVC: UITableViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.scrollEnabled = true
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    /// notification that keyboard will show.  Assign the keyboard height to the presentation controller
-    func keyboardWillShow(notification: NSNotification) {
-        let userInfo:NSDictionary = notification.userInfo!
-        let keyboardFrame:NSValue = userInfo.valueForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
-        let keyboardRectangle = keyboardFrame.CGRectValue()
-        let keyboardHeight = keyboardRectangle.height
-        
-        if let p = presentationController as? CommentPresentationController {
-            p.keyBoardHeight = keyboardHeight
-        }
-    }
-    
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        coordinator.animateAlongsideTransition({ [unowned self] _ in
-            self.postTextField.becomeFirstResponder()
-            }) { _ in
-            // do nothing
-        }
     }
 }
 
 extension CommentTVC {
-    
-    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        
-        // makes the footer view static at bottom of screen
-        var view: UIView?
-        if section == tableView.numberOfSections - 1 {
-            view = footerView
-            footerView.removeFromSuperview()
-        }
-        return view
-    }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1

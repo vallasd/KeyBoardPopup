@@ -10,11 +10,17 @@ import UIKit
 class CommentPresentationController: UIPresentationController, UIAdaptivePresentationControllerDelegate {
     
     var chromeView: UIView = UIView()
+    var keyBoardHeight: CGFloat = 0.0
     
-    var keyBoardHeight: CGFloat = 200.0
+    let headerBuffer: CGFloat = 20.0
+    let keyBoardBuffer: CGFloat = 8.0
     
     override init(presentedViewController: UIViewController, presentingViewController: UIViewController) {
         super.init(presentedViewController:presentedViewController, presentingViewController:presentingViewController)
+        setupChrome()
+    }
+    
+    func setupChrome() {
         chromeView.backgroundColor = UIColor(white:0.0, alpha:0.4)
         chromeView.alpha = 0.0
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.chromeViewTapped(_:)))
@@ -32,7 +38,7 @@ class CommentPresentationController: UIPresentationController, UIAdaptivePresent
         let containerBounds = containerView!.bounds
         presentedViewFrame.size = sizeForChildContentContainer(presentedViewController, withParentContainerSize: containerBounds.size)
         presentedViewFrame.origin.x = containerBounds.size.width - presentedViewFrame.size.width
-        
+        presentedViewFrame.origin.y = headerBuffer
         return presentedViewFrame
     }
     
@@ -40,11 +46,12 @@ class CommentPresentationController: UIPresentationController, UIAdaptivePresent
         
         var height: CGFloat = parentSize.height
         
+        // assign keyboard height if it exists
         if keyBoardHeight != 0 {
-            height = CGFloat((floorf(Float(parentSize.height - keyBoardHeight - 8.0))))
+            height = CGFloat((floorf(Float(parentSize.height - keyBoardHeight - keyBoardBuffer))))
         }
         
-        let size = CGSizeMake(parentSize.width, height)
+        let size = CGSizeMake(parentSize.width, height - headerBuffer)
         return size
     }
     
@@ -92,8 +99,8 @@ class CommentPresentationController: UIPresentationController, UIAdaptivePresent
         return UIModalPresentationStyle.FullScreen
     }
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.Popover
-    }
+//    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+//        return UIModalPresentationStyle.Popover
+//    }
     
 }
