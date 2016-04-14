@@ -14,7 +14,6 @@ class MainViewController: UIViewController, UIPopoverPresentationControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     // MARK: - Implementation

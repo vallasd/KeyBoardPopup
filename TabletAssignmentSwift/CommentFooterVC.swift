@@ -10,10 +10,8 @@ import Foundation
 import UIKit
 
 protocol CommentFooterDelegate: AnyObject {
-    
     func textFieldSet(textField tf: UITextField)
 }
-
 
 class CommentFooterVC: UIViewController {
     
