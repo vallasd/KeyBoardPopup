@@ -17,13 +17,13 @@ class MainViewController: UIViewController, UIPopoverPresentationControllerDeleg
     }
     
     // MARK: - Implementation
-    @IBAction func barButtonTapped(sender: AnyObject) {
+    @IBAction func barButtonTapped(_ sender: AnyObject) {
         transitioningDelegate = commentTransitionDelegate
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewControllerWithIdentifier("commentVC") as! CommentVC
-        vc.modalPresentationStyle = UIModalPresentationStyle.Custom
+        let vc = sb.instantiateViewController(withIdentifier: "commentVC") as! CommentVC
+        vc.modalPresentationStyle = UIModalPresentationStyle.custom
         vc.transitioningDelegate = commentTransitionDelegate
-        presentViewController(vc, animated: true, completion: nil)
+        present(vc, animated: true, completion: nil)
     }
 
 }

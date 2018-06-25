@@ -15,15 +15,15 @@ class CommentVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
     }
     
     /// notification that keyboard will show.  Assign the keyboard height to the presentation controller
-    func keyboardWillShow(notification: NSNotification) {
+    func keyboardWillShow(_ notification: Notification) {
         
-        let userInfo:NSDictionary = notification.userInfo!
-        let keyboardFrame:NSValue = userInfo.valueForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
-        let keyboardRectangle = keyboardFrame.CGRectValue()
+        let userInfo:NSDictionary = (notification as NSNotification).userInfo! as NSDictionary
+        let keyboardFrame:NSValue = userInfo.value(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
+        let keyboardRectangle = keyboardFrame.cgRectValue
         let keyboardHeight = keyboardRectangle.height
         
         if let p = presentationController as? CommentPresentationController {
@@ -31,17 +31,17 @@ class CommentVC: UIViewController {
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let segueName = segue.identifier
         
         if segueName == "embededCommentHeaderVC" {
-            let vc = segue.destinationViewController as! CommentHeaderVC
+            let vc = segue.destination as! CommentHeaderVC
             vc.delegate = self
         }
         
         if segueName == "embededCommentFooterVC" {
-            let vc = segue.destinationViewController as! CommentFooterVC
+            let vc = segue.destination as! CommentFooterVC
             vc.delegate = self
         }
     }
@@ -52,7 +52,7 @@ extension CommentVC: CommentHeaderDelegate {
     
     func donePressed() {
         textField.resignFirstResponder()
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
 }

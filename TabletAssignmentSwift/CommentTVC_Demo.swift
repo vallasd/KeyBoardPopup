@@ -26,10 +26,10 @@ class CommentTVC_demo {
         let user4 = User(name: "David", imageName: "david")
         
         // create dates
-        let today = NSDate()
-        let hours22Ago = today.dateByAddingTimeInterval(-79200.0)
-        let yesterday = today.dateByAddingTimeInterval(-86400.0)
-        let day3sago = today.dateByAddingTimeInterval(-259200.0)
+        let today = Date()
+        let hours22Ago = today.addingTimeInterval(-79200.0)
+        let yesterday = today.addingTimeInterval(-86400.0)
+        let day3sago = today.addingTimeInterval(-259200.0)
         
         // create comments
         let comment1 = Comment(user: user1, message: "#space #NASA #history", commentDate: day3sago.double, likes: [])

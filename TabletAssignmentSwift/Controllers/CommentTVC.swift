@@ -12,36 +12,36 @@ class CommentTVC: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
-        tableView.scrollEnabled = true
+        tableView.isScrollEnabled = true
     }
 }
 
 extension CommentTVC {
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         // demo data (likesRow + replublishedRow + Comments)
         return 2 + CommentTVC.demoCommentCount
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.row < 2 { return 44.0 }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath as NSIndexPath).row < 2 { return 44.0 }
         return 100.0
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let row = indexPath.row
+        let row = (indexPath as NSIndexPath).row
         
         // CommentMetaTVCell
         if row < 2 {
             
             let cellID = "commentMetaTVCell"
-            let cell: CommentMetaTVCell = tableView.dequeueReusableCellWithIdentifier(cellID) as! CommentMetaTVCell
+            let cell: CommentMetaTVCell = tableView.dequeueReusableCell(withIdentifier: cellID) as! CommentMetaTVCell
             
             // update CommentMetaTVCell
             if row == 0 {
@@ -60,7 +60,7 @@ extension CommentTVC {
         let cellID = "commentTVCell"
         // demo data
         let comment = CommentTVC.demoComment(atIndex: row - 2)
-        let cell: CommentTVCell = tableView.dequeueReusableCellWithIdentifier(cellID) as! CommentTVCell
+        let cell: CommentTVCell = tableView.dequeueReusableCell(withIdentifier: cellID) as! CommentTVCell
         cell.userImageView.circled()
         // update CommentTVCell
         cell.userImageView.image = UIImage(named: comment.user.imageName)
@@ -72,8 +72,8 @@ extension CommentTVC {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        let row = indexPath.row
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let row = (indexPath as NSIndexPath).row
         print("Row \(row) pressed")
     }
 }

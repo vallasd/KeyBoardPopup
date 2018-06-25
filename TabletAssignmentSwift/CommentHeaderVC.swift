@@ -15,7 +15,7 @@ class CommentHeaderVC: UIViewController {
     
     weak var delegate: CommentHeaderDelegate?
     
-    @IBAction func donePressed(sender: AnyObject) {
+    @IBAction func donePressed(_ sender: AnyObject) {
         delegate?.donePressed()
     }
 

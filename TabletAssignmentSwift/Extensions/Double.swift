@@ -13,9 +13,9 @@ extension Double {
     /// returns the time of a double value as "Today", "xx days" (for values in the past or future)
     var commentTime: String {
     
-        let now = NSDate()
-        let interval: NSTimeInterval = self / 1000
-        let date = NSDate(timeIntervalSince1970: interval)
+        let now = Date()
+        let interval: TimeInterval = self / 1000
+        let date = Date(timeIntervalSince1970: interval)
     
         let count = now.days(sinceDate: date)
         

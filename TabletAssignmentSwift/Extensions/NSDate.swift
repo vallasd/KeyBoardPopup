@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension NSDate {
+extension Date {
     
     /// returns a double value for the NSDate
     var double: Double {
@@ -17,11 +17,11 @@ extension NSDate {
     }
     
     /// returns days since date, treats a day as a 24 hour period.  Always returns a positive number.
-    func days(sinceDate sd: NSDate) -> Int {
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Day], fromDate: sd, toDate: self, options: [])
+    func days(sinceDate sd: Date) -> Int {
+        let calendar = Calendar.current
+        let components = (calendar as NSCalendar).components([.day], from: sd, to: self, options: [])
         let days = components.day
-        return abs(days)
+        return abs(days!)
     }
     
 }

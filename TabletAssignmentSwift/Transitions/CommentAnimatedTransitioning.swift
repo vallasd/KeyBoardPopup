@@ -13,26 +13,26 @@ class CommentAnimatedTransitioning: NSObject, UIViewControllerAnimatedTransition
     
     var keyboardHeight : CGFloat = 400.00
     
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.3
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         
-        let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)
-        let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
+        let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)
+        let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)
         let fromView = fromVC?.view
         let toView = toVC?.view
-        let containerView = transitionContext.containerView()
+        let containerView = transitionContext.containerView
         
         if isPresentation {
-            containerView!.addSubview(toView!)
+            containerView.addSubview(toView!)
         }
         
         let animatingVC = isPresentation ? toVC : fromVC
         let animatingView = animatingVC?.view
         
-        var finalFrameForVC = transitionContext.finalFrameForViewController(animatingVC!)
+        var finalFrameForVC = transitionContext.finalFrame(for: animatingVC!)
         var initialFrameForVC = finalFrameForVC
         
         // Set Initial frame data
@@ -49,7 +49,7 @@ class CommentAnimatedTransitioning: NSObject, UIViewControllerAnimatedTransition
         
         animatingView?.frame = initialFrame
         
-        UIView.animateWithDuration(transitionDuration(transitionContext), delay:0, usingSpringWithDamping:300.0, initialSpringVelocity:5.0, options:UIViewAnimationOptions.AllowUserInteraction, animations:{
+        UIView.animate(withDuration: transitionDuration(using: transitionContext), delay:0, usingSpringWithDamping:300.0, initialSpringVelocity:5.0, options:UIViewAnimationOptions.allowUserInteraction, animations:{
             animatingView?.frame = finalFrame
             }, completion:{ (value: Bool) in
                 if !self.isPresentation {
